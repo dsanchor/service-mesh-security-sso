@@ -7,7 +7,7 @@ objects:
   apiVersion: route.openshift.io/v1
   metadata:
     name: ${INGRESS_GW}-productpage
-    namespace: istio-system
+    namespace: ${MESH_NS} 
   spec:
     host: ${PRODUCTPAGE_HOST}
     to:
@@ -68,6 +68,9 @@ objects:
 parameters:
 - description:  Namespace for the productpage service is deployed
   name: APPS_NS
+  required: true
+- description:  Namespace for the Istio control plane
+  name: MESH_NS
   required: true
 - description:  Specific ingress gateway that productpage service will be bound to be exposed
   name: INGRESS_GW
