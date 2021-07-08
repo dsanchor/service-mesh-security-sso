@@ -55,6 +55,7 @@ objects:
           - --skip-provider-button=true
           - --whitelist-domain=${APP_DOMAIN}
           - --oidc-issuer-url=${OIDC_ISSUER_URL}
+          - --ssl-insecure-skip-verify=true
           env:
           - name: OAUTH2_PROXY_CLIENT_ID
             valueFrom:
@@ -109,37 +110,6 @@ objects:
     trafficPolicy:
       tls:
         mode: ISTIO_MUTUAL
-- apiVersion: networking.istio.io/v1alpha3
-  kind: ServiceEntry
-  metadata:
-    name: accounts-google
-  spec:
-    hosts:
-    - accounts.google.com
-    location: MESH_EXTERNAL
-    ports:
-    - number: 443
-      name: https
-      protocol: TLS
-    resolution: DNS
-    exportTo:
-    - ${OAUTH_NS}
-- apiVersion: networking.istio.io/v1alpha3
-  kind: ServiceEntry
-  metadata:
-    name: oauth2-googleapis
-  spec:
-    hosts:
-    - oauth2.googleapis.com
-    - www.googleapis.com
-    location: MESH_EXTERNAL
-    ports:
-    - number: 443
-      name: https
-      protocol: TLS
-    resolution: DNS
-    exportTo:
-    - ${OAUTH_NS}
 parameters:
 - description:  Specific ingress gateway that productpage service will be bound to be exposed
   name: INGRESS_GW
