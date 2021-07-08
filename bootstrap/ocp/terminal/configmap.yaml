@@ -1,0 +1,19 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: user-config
+  namespace: ${USER_NS}-terminal
+data:
+  env: |-
+    OCP_CONSOLE=https://console-openshift-console.apps.labs.sandbox1601.opentlc.com/
+    OCP_API=https://api.labs.sandbox1601.opentlc.com:6443
+    USER=${USER}
+    PASSWORD=${PASSWORD}
+    APPS_NS1=${USER_NS}-1
+    APPS_NS2=${USER_NS}-2
+    SERVICE_MESH_NS=istio-system
+    INGRESS_GW=${USER_NS}-ingress
+    OCP_APPS_DOMAIN=apps.labs.sandbox1601.opentlc.com
+    KIALI_CONSOLE=https://kiali-istio-system.apps.labs.sandbox1601.opentlc.com/
+    LABS_HOME=/home/user/service-mesh-security-sso
+    PRODUCTPAGE_HOST=productpage-${USER_NS}-1.apps.labs.sandbox1601.opentlc.com

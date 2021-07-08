@@ -1,0 +1,15 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakRealm
+metadata:
+  name: servicemesh
+  labels:
+    app: sso
+spec:
+  realm:
+    id: "servicemesh"
+    realm: "servicemesh"
+    enabled: True
+    displayName: "Service Mesh Realm"
+  instanceSelector:
+    matchLabels:
+      app: sso

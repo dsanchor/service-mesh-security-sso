@@ -12,14 +12,11 @@ oc login -u $ADMIN_USER $OCP_API
 
 oc new-project $MESH_NS
 
-oc apply -f ./ocp/roles/labs-istio.yaml
 
 for line in `cat $USERS_LIST`
 do
   IFS='#' read -r -a array <<< "$line"
   echo "Bootstraping user => ${array[0]}  ${array[1]}"
-  ./bootstrap-user.sh $MESH_NS ${array[0]}  ${array[1]} 
-  echo "-------------------------------"
   cat smcp/additional-ingress.yaml | USER_NS=${array[1]} envsubst >> $TMP_FILE
   echo -e "\r" >> $TMP_FILE
 done 

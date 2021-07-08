@@ -1,0 +1,11 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: oauth-config
+  namespace: ${USER_NS}-terminal
+data:
+  env: |-
+    CLIENT_ID=workshop
+    CLIENT_SECRET=client-secret
+    OIDC_ISSUER_URL=https://keycloak-sso.apps.labs.sandbox1601.opentlc.com/auth/realms/servicemesh
+    OIDC_JWKS_URI=http://keycloak-http-sso.apps.labs.sandbox1601.opentlc.com/auth/realms/servicemesh/protocol/openid-connect/certs 

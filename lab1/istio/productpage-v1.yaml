@@ -7,7 +7,7 @@ objects:
   apiVersion: route.openshift.io/v1
   metadata:
     name: ${INGRESS_GW}-productpage
-    namespace: ${MESH_NS} 
+    namespace: ${MESH_NS}
   spec:
     host: ${PRODUCTPAGE_HOST}
     to:

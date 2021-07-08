@@ -1,0 +1,22 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakClient
+metadata:
+  name: workshop
+  labels:
+    app: sso
+spec:
+  realmSelector:
+     matchLabels:
+       app: sso
+  client:
+    # auto-generated if not supplied
+    # id: 1234
+    clientId: workshop
+    secret: client-secret
+    standardFlowEnabled: true
+    implicitFlowEnabled: true
+    directAccessGrantsEnabled: true
+    redirectUris:
+      - https://TODO.productapage.test/*
+    # roles:
+    # TODO

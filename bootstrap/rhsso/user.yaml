@@ -1,0 +1,23 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakUser
+metadata:
+  name: ${USER_NS}
+spec:
+  user:
+    username: "${USER_NS}"
+    password: "${USER_NS}"
+    email: "${USER}"
+    enabled: true
+    emailVerified: true
+    realmRoles:
+      - "offline_access"
+    clientRoles:
+      workshop:
+        - "mesh"
+    credentials:
+      - temporary: false
+        type: password
+        value: ${USER_NS}
+  realmSelector:
+    matchLabels:
+      app: sso

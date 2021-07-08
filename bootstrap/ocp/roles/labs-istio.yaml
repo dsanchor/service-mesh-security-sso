@@ -20,12 +20,12 @@ rules:
     resources:
       - routes
   - apiGroups: 
-      - "" 
-      - route.openshift.io 
+    - "" 
+    - route.openshift.io 
     resources: 
-      - routes/custom-host 
+    - routes/custom-host 
     verbs: 
-      - create 
+    - create 
   - verbs:
       - '*'
     apiGroups:

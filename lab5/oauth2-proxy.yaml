@@ -110,6 +110,21 @@ objects:
     trafficPolicy:
       tls:
         mode: ISTIO_MUTUAL
+- apiVersion: networking.istio.io/v1alpha3
+  kind: ServiceEntry
+  metadata:
+    name: rhsso
+  spec:
+    hosts:
+    - keycloak-sso.apps.labs.sandbox1601.opentlc.com
+    location: MESH_EXTERNAL
+    ports:
+    - number: 443
+      name: https
+      protocol: TLS
+    resolution: DNS
+    exportTo:
+    - ${OAUTH_NS}
 parameters:
 - description:  Specific ingress gateway that productpage service will be bound to be exposed
   name: INGRESS_GW
