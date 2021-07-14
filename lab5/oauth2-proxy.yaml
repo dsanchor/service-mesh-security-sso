@@ -116,6 +116,7 @@ objects:
     name: rhsso
   spec:
     hosts:
+    # FIXME add parameter
     - keycloak-sso.apps.labs.sandbox1601.opentlc.com
     location: MESH_EXTERNAL
     ports:
